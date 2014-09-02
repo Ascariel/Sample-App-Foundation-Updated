@@ -3,7 +3,7 @@ require 'spec_helper'
 # require 'capybara/rails'
 # 
  
-describe "Static pages" do
+describe "Static pages", :type => :feature do
  
 
   let!(:base_title) {"Ruby on Rails Tutorial Sample App"}
@@ -16,9 +16,9 @@ describe "Static pages" do
     before { visit root_path }
     # visit 'users/new'
 
-    it {should have_content('Home')}
-    it {should have_title(full_title("")) }
-    it {should_not have_title('| Home')}
+    it {is_expected.to have_content('Home')}
+    it {is_expected.to have_title(full_title("")) }
+    it {is_expected.not_to have_title('| Home')}
 
     # it "should have the content 'Home'" do
     #   visit root_path
@@ -43,9 +43,9 @@ describe "Static pages" do
   describe "Help page" do
     before {visit help_path}
 
-    it {should have_content('Help')}
-    it {should have_title(full_title(""))}
-    it {should_not have_content('| Help')}
+    it {is_expected.to have_content('Help')}
+    it {is_expected.to have_title(full_title(""))}
+    it {is_expected.not_to have_content('| Help')}
 
   #   it "should have the content 'Help'" do
   #     visit help_path
@@ -62,9 +62,9 @@ end
 
     before {visit about_path}
 
-    it {should have_content('About')}
-    it {should have_title(full_title(""))}
-    it {should_not have_content('| About')}
+    it {is_expected.to have_content('About')}
+    it {is_expected.to have_title(full_title(""))}
+    it {is_expected.not_to have_content('| About')}
 
     # it "should have the content 'About Us'" do
     #     visit about_path
@@ -82,9 +82,9 @@ describe "Contact Us page" do
 
   before {visit contact_path}
 
-    it {should have_content('Contact')}
-    it {should have_selector('h1', text: 'Contact'), "expecting...got #{html}"}
-    it {should have_title(full_title(''))}
+    it {is_expected.to have_content('Contact')}
+    it {is_expected.to have_selector('h1', text: 'Contact'), "expecting...got #{html}"}
+    it {is_expected.to have_title(full_title(''))}
 
 
    #  it "displays Contact content" do 
