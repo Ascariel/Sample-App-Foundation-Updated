@@ -7,7 +7,7 @@ gem 'sprockets'
 
 group :development, :test do
   gem 'sqlite3'
-  gem 'rspec-rails', '2.99'
+  gem 'rspec-rails' 
   #Needed for Spork
   gem 'spork-rails'
   gem 'guard-spork'

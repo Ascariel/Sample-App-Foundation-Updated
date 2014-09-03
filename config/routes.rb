@@ -3,10 +3,10 @@ TestFoundation::Application.routes.draw do
   # get "test/test"
   # root 'test#index'
 
+  
+  # get "users/new"
+
   root 'static_pages#home'
-  get "users/new"
-
-
   match '/signup', to: 'users#new', via: 'get'
   match '/about' => 'static_pages#about', via: 'get' #both syntax work
   match '/help', to: 'static_pages#help', via: 'get'
@@ -15,13 +15,19 @@ TestFoundation::Application.routes.draw do
   #match '/', to: 'static_pages#home', via: 'get'
 end
 
-#    Prefix Verb URI Pattern          Controller#Action
-#      root GET  /                    static_pages#home
-# users_new GET  /users/new(.:format) users#new
-#    signup GET  /signup(.:format)    users#new
-#     about GET  /about(.:format)     static_pages#about
-#      help GET  /help(.:format)      static_pages#help
-#   contact GET  /contact(.:format)   static_pages#contact
+
+#  Prefix Verb URI Pattern        Controller#Action
+#
+#    root GET  /                  static_pages#home
+#  signup GET  /signup(.:format)  users#new
+#   about GET  /about(.:format)   static_pages#about
+#    help GET  /help(.:format)    static_pages#help
+# contact GET  /contact(.:format) static_pages#contact
+
+
+
+
+
 
 
 

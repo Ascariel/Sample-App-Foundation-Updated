@@ -1,3 +1,36 @@
 // Place all the styles related to the StaticPages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+
+.main-panel {
+  margin-top:70px;
+  padding-top: 40px;  
+  
+}
+
+div.main-panel {
+  padding-top: 40px;  
+  padding-bottom:20px;
+}
+.panel-title {
+
+}
+p.panel-subtitle {
+  color:grey;
+  font-size: 1.1em;
+}
+
+// Footer
+
+ul.no-list li {
+  list-style: none;
+  display: inline-block;
+  margin-left:10px ;
+  // color: #555;
+}
+ul.no-list li a {
+  color: #555;
+}

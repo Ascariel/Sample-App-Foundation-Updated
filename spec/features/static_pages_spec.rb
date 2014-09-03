@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 # require 'rails_helper'
 # require 'capybara/rails'
 # 
@@ -17,8 +17,8 @@ describe "Static pages", :type => :feature do
     # visit 'users/new'
 
     it {is_expected.to have_content('Home')}
-    it {is_expected.to have_title(full_title("")) }
-    it {is_expected.not_to have_title('| Home')}
+    it {is_expected.to have_title(full_title("")), "got #{html}" }
+    it {is_expected.not_to have_title(full_title('Home'))}
 
     # it "should have the content 'Home'" do
     #   visit root_path
@@ -44,7 +44,7 @@ describe "Static pages", :type => :feature do
     before {visit help_path}
 
     it {is_expected.to have_content('Help')}
-    it {is_expected.to have_title(full_title(""))}
+    it {is_expected.to have_title(full_title("Help"))}
     it {is_expected.not_to have_content('| Help')}
 
   #   it "should have the content 'Help'" do
