@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.1.2'
 
+gem 'bcrypt'
 gem 'foundation-rails' 
 gem 'rails'
 gem 'sprockets'
@@ -12,6 +13,7 @@ group :development, :test do
   gem 'spork-rails'
   gem 'guard-spork'
   gem 'childprocess'
+  gem 'awesome_print'
 end
 
 group :test do
