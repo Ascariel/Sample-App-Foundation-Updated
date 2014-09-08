@@ -5,24 +5,35 @@ TestFoundation::Application.routes.draw do
 
   
   # get "users/new"
-
+  
   root 'static_pages#home'
-  match '/signup', to: 'users#new', via: 'get'
+  # match '/signup', to: 'users#new', via: 'get'
+
   match '/about' => 'static_pages#about', via: 'get' #both syntax work
   match '/help', to: 'static_pages#help', via: 'get'
   match'/contact', to: 'static_pages#contact', via: 'get'
+  resources :users
   
   #match '/', to: 'static_pages#home', via: 'get'
 end
 
+#    Prefix Verb   URI Pattern               Controller#Action
+#     users GET    /users(.:format)          users#index
+#           POST   /users(.:format)          users#create
+#  new_user GET    /users/new(.:format)      users#new
+# edit_user GET    /users/:id/edit(.:format) users#edit
+#      user GET    /users/:id(.:format)      users#show
+#           PATCH  /users/:id(.:format)      users#update
+#           PUT    /users/:id(.:format)      users#update
+#           DELETE /users/:id(.:format)      users#destroy
+#      root GET    /                         static_pages#home
+#    signup GET    /signup(.:format)         users#new
+#     about GET    /about(.:format)          static_pages#about
+#      help GET    /help(.:format)           static_pages#help
+#   contact GET    /contact(.:format)        static_pages#contact
 
-#  Prefix Verb URI Pattern        Controller#Action
-#
-#    root GET  /                  static_pages#home
-#  signup GET  /signup(.:format)  users#new
-#   about GET  /about(.:format)   static_pages#about
-#    help GET  /help(.:format)    static_pages#help
-# contact GET  /contact(.:format) static_pages#contact
+
+
 
 
 

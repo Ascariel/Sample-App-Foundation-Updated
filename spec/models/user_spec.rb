@@ -49,13 +49,26 @@ describe User, :type => :model do
     end
   end
   describe "when email address is already taken" do
-   before do
-    @user_with_same_email = @user.dup
-    @user_with_same_email.email = @user.email.upcase
-    @user_with_same_email.save
-  end
+    before do
+      @user_with_same_email = @user.dup
+      @user_with_same_email.email = @user.email.upcase
+      @user_with_same_email.save
+    end
   it { expect(@user).to_not be_valid }
   end
+  describe 'email gets properly downcased' do 
+    before do 
+      @user = User.new(name:"Example User", email:"user@example.com",
+                   password: " 12344567", password_confirmation: " 12344567") 
+    end
+    let!(:mixedCase) { @user.email = "EmaIl@mixedCase.com"}
+    it 'should be downcased after being saved' do
+      @user.save
+      expect(@user.email).to eq(mixedCase.downcase)
+    end
+
+  end
+
   describe 'password cant be blank' do
     before { @user = User.new(name:"Example User", email:"user@example.com",
                    password: " ", password_confirmation: " ") }

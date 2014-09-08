@@ -1,0 +1,17 @@
+<div class="row msg-alert ">
+  <% if @user.errors.any? %>
+
+      <div data-alert class="alert-box ">
+        <h4>The form contains <%= pluralize(@user.errors.count, 'error') %></h1>
+      </div>
+      <div class="msg-alert small-10 columns">
+        <ul class="msg-alert">
+        <% @user.errors.full_messages.each do |error| %>
+
+          <li>
+            <h6><%= error %></h6>
+          </li>
+        <% end %>
+       </ul>
+      </div>
+  <% end %></div>
