@@ -13,6 +13,12 @@ TestFoundation::Application.routes.draw do
   match '/help', to: 'static_pages#help', via: 'get'
   match'/contact', to: 'static_pages#contact', via: 'get'
   resources :users
+  # resources :sessions, :only => [:new, :create, :destroy]
+
+  match '/signin' => 'sessions#new', via: 'get'
+  match '/signout' => 'sessions#destroy', via: 'delete'
+  match '/sessions' => 'sessions#create', via: 'post'
+  # resources :sessions, only: [:new, :create, :destroy] #Also works
   
   #match '/', to: 'static_pages#home', via: 'get'
 end

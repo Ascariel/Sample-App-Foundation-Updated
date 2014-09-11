@@ -13,14 +13,28 @@
         <ul class="right">
           <li class="active"><%= link_to("Home", root_path) %></li>
           <li><%= link_to("Help", help_path) %></li>
-          <li><%= link_to("Sign in", '#') %></li>
-          <li class="has-dropdown">
+          <% if sign_in? %>
+            <li><%= link_to current_user.name, user_path(current_user) %></li>
+            <li><%= link_to "Sign out", signout_path , :method => :delete %></li>
+            <li class="has-dropdown">
+              <%= link_to 'Account', "#" %>
+              <ul class="dropdown">
+                <li><%= link_to("Profile", user_path(current_user)) %></li>
+                <li><a href="#">Settings</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Favorites</a></li>
+              </ul>
+            </li>
+          <% else %>
+            <li><%= link_to("Sign in", signin_path) %></li>
+          <% end %>
+          <!-- <li class="has-dropdown">
             <a href="#">Explore</a>
             <ul class="dropdown">
               <li><a href="#">First link in dropdown</a></li>
               <li class="active"><a href="#">Active link in dropdown</a></li>
             </ul>
-          </li>
+          </li> -->
         </ul>
   
         <!-- ########## Left Nav Section -->

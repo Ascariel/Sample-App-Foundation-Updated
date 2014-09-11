@@ -5,14 +5,16 @@ describe User, :type => :model do
                  password: "foobar", password_confirmation: "foobar")}
   subject {@user}
 
+  it { should be_valid }
   it { should respond_to(:name) }
   it { should respond_to(:email) }
   it { should respond_to(:password_digest) }
   it { should respond_to :password }
   it { should respond_to :password_confirmation }
   it { should respond_to(:authenticate) }
+  it { should respond_to(:remember_token) }
 
-  it { should be_valid }
+  
 
   describe 'When name is not present' do 
     before { @user.name = " " }
@@ -66,7 +68,6 @@ describe User, :type => :model do
       @user.save
       expect(@user.email).to eq(mixedCase.downcase)
     end
-
   end
 
   describe 'password cant be blank' do
@@ -92,11 +93,21 @@ describe User, :type => :model do
       it { should_not eq user_for_invalid_password }
       specify { expect(user_for_invalid_password).to be_falsey } #syntax change 3.0
       # specify {expect(user_for_invalid_password).to be_false}
-
     end
     describe 'password length over 6 chars' do 
       before { @user.password = @user.password_confirmation = "a" * 5}
       it { should_not be_valid }
+    end
+  end
+  describe 'remember token' do 
+    before do @user = User.new(name:"Example User", email:"user@example.com",
+                 password: "foobar", password_confirmation: "foobar")
+              @user.save
+    end
+    
+    # its(:remember_token) { should_not be_blank } #not working
+    it 'should not be blank' do 
+    expect(@user.remember_token).to_not be_blank #  same syntax?
     end
   end
 

@@ -40,7 +40,7 @@ describe "UserPages", :type => :feature do
         fill_in 'Name', with: "Example User"
         fill_in 'Email', with: "user@example.com"
         fill_in "Password", with: "foobar"
-        fill_in "user_password_confirmation", with: "foobar"
+        fill_in "Password confirmation", with: "foobar"
         ###### Can ue Id, Or Label to anchor the fill_in
       end
       it "should create a user" do
@@ -52,7 +52,9 @@ describe "UserPages", :type => :feature do
 
           it { should have_content(user.name) }
           it { expect(have_selector('div', text: 'Welcome to our Tweeter App'))}
-          it { should have_selector('div', text: "Welcome to our Tweeter App") }
+          it { should have_link('Sign out'), html }
+
+         
       end # end after saving user
     end # end succeed on valid data
   end # end signup

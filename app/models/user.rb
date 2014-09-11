@@ -6,10 +6,23 @@ class User < ActiveRecord::Base
   validates :password, length: {minimum: 6}
   before_save :email_downcase #before_save { self.email = email.downcase } also works
   has_secure_password   #CREATES VIRTUAL ATTRIBUTES (PASSWORD AND PASSWORD_CONFIRMATION)
-  # before_save {email.downcase!}
+  before_create :create_remember_token
 
   def email_downcase
     self.email = self.email.downcase
   end
 
+  def User.new_remember_token
+    SecureRandom.urlsafe_base64
+  end
+
+  def User.digest(token)
+    Digest::SHA1.hexdigest(token.to_s)
+  end
+
+  private
+
+    def create_remember_token
+      self.remember_token = User.digest(User.new_remember_token)
+    end
 end
