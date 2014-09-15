@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 describe User, :type => :model do
-  before {@user = User.new(name:"Example User", email:"user@example.com",
-                 password: "foobar", password_confirmation: "foobar")}
-  subject {@user}
+  before { @user = User.new(name:"Example User", email:"user@example.com",
+                 password: "foobar", password_confirmation: "foobar") }
+  subject { @user }
 
   it { should be_valid }
   it { should respond_to(:name) }
@@ -11,8 +11,21 @@ describe User, :type => :model do
   it { should respond_to(:password_digest) }
   it { should respond_to :password }
   it { should respond_to :password_confirmation }
-  it { should respond_to(:authenticate) }
   it { should respond_to(:remember_token) }
+  it { should respond_to(:authenticate) }
+  it { should respond_to(:admin) }
+
+  it { should_not be_admin }
+
+  describe 'with admin attribute set to true' do 
+    before do 
+      @user.save!
+      @user.toggle!(:admin)
+    end
+
+    it { should be_admin }
+  end
+  
 
   
 
@@ -110,6 +123,8 @@ describe User, :type => :model do
     expect(@user.remember_token).to_not be_blank #  same syntax?
     end
   end
+
+
 
 end #content end
     ###### alt syntax ########

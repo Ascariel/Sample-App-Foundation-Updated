@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
 ruby '2.1.2'
 
+gem 'will_paginate-foundation'
+gem 'will_paginate'
+gem 'faker'
 gem 'bcrypt'
 gem 'foundation-rails' 
 gem 'rails'
