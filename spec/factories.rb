@@ -8,14 +8,17 @@ FactoryGirl.define do
 #   end
 # end  
   factory :user do
-    sequence(:name)  { |n| "Person #{n}" }
-    sequence(:email) { |n| "person_#{n}@example.com"}
+    sequence :name  do |n| "Person #{n}" end  #same as:
+    sequence(:email) { |n| "person_#{n}@example.com"} #same 
     password "foobar"
     password_confirmation "foobar"
     
     factory :admin do 
       admin true
     end
-
+  end
+  factory :micropost do 
+    content 'Lorem ipsum'
+    user  #associates the miropost to its owner user
   end
 end

@@ -1,0 +1,28 @@
+
+<div class="row">
+  <div class="small-4 medium-5 columns mg-tp10">
+      <%= link_to gravatar_for(current_user, size: 100), current_user %>
+  </div>
+  <div class="show-for-small-only mg-tp25">    </div>
+  <div class="small-8 medium-7 columns ">
+    <h2 class="no-mrg-btm"><%= current_user.name %></h1>
+    <p class="no-mrg-btm"> <%= link_to 'view my profile', current_user, class: 'no-mrg-btm' %> </p>
+    <span><%= pluralize(current_user.microposts.count, 'micropost') %></span>
+  </div>
+
+</div>
+
+
+
+
+
+
+<!-- 
+
+
+  <%#= link_to gravatar_for(current_user, size: 100), current_user, class: 'left' %>
+  <div class="left right-info">
+    <h1 class="no-mrg-btm"><%#= current_user.name %></h1>
+    <p class="no-mrg-btm"> <%#= link_to 'view my profile', current_user, class: 'no-mrg-btm' %> </p>
+    <span><%#= pluralize(current_user.microposts.count, 'micropost') %></span>
+  </div> -->
