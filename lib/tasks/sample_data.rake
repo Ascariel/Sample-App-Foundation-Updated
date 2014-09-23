@@ -15,5 +15,13 @@ namespace :db do
                    password: password,
                    password_confirmation: password)
     end
+    users = User.limit(6)
+    50.times do |n|
+      content = Faker::Lorem.sentence(5)
+      users.each do |user|
+        user.microposts.create!(content: content) #bang create raises exception on failure, good for catching silent errors
+      end
+    end
+
   end
 end

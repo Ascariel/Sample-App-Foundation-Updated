@@ -14,6 +14,8 @@ describe User, :type => :model do
   it { should respond_to(:remember_token) }
   it { should respond_to(:authenticate) }
   it { should respond_to(:admin) }
+  it { should respond_to(:microposts) }
+  it { should respond_to(:feed) }
 
   it { should_not be_admin }
 
@@ -123,6 +125,37 @@ describe User, :type => :model do
     expect(@user.remember_token).to_not be_blank #  same syntax?
     end
   end
+
+  describe 'microposts associations' do 
+    before { @user.save }
+    let!(:older_micropost) do
+      FactoryGirl.create(:micropost, user: @user, created_at: 1.day.ago)
+    end
+    let!(:newer_micropost) do
+      FactoryGirl.create(:micropost, user: @user, created_at: 1.hour.ago)
+    end
+
+    it 'should have the right microposts in the right order' do 
+      expect(@user.microposts.to_a).to eq [newer_micropost, older_micropost]
+    end
+
+    it 'should destroy associated microposts' do 
+      microposts = @user.microposts.to_a #to_a makes a copy avoiding deletion by mutation
+      @user.destroy
+      microposts.each do |micropost|
+        expect(Micropost.where(id: micropost.id)).to be_empty #using find instead of where raises exception when not found
+      end
+    end
+
+    describe 'status' do
+      let!(:unfollowed_post) { FactoryGirl.create(:micropost, user: FactoryGirl.create(:user)) }
+
+      specify { expect(@user.feed).to include(newer_micropost) }
+      specify { expect(@user.feed).to include(older_micropost) }
+      specify { expect(@user.feed).to_not include(unfollowed_post) }
+    end
+  end
+
 
 
 

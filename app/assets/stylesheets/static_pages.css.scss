@@ -3,6 +3,24 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+
+// GENERAL RULES
+
+.clearfix {
+  clear:both;
+}
+.inline-block {
+  display:inline-block;
+}
+.no-mrg-btm {
+  margin-bottom:0px
+}
+.mg-tp-15 {
+  margin-top: -15px;
+}
+.mg-tp10 {
+  margin-top: 10px!important;
+}
 // Title Margins
 
 h1.lead-title {
@@ -14,9 +32,10 @@ h1.lead-title {
 
 div.margin-top, ul.margin-top {
 
-  margin-top: 50px;
+  margin-top: 50px!important;
   margin-bottom: 10px;
 }
+
 .panel.main-panel {
   margin-top:30px;
   margin-bottom: 20px;
@@ -29,12 +48,13 @@ div.margin-top, ul.margin-top {
 div.alert-box{
   background-color:rgb(226, 201, 201);
   color:rgb(221, 37, 37);
-  max-height: 50px;
+  // max-height: 50px;
   border-color: #E48A91;
+  margin-top: 15px;
+  margin-bottom: 15px;
   padding-bottom: 5px;
-  h4 {
-    color: #D64F4F;
-    
+  h1, h2, h3, h4, h5, h6 {
+    color: red; //#D64F4F;
   }
   
 }
@@ -66,7 +86,32 @@ ul.msg-alert {
     }
   }
 }
+//Microposts
 
+.field {
+  // width:  350px;
+  height: 150px;
+  margin:50px 0 20px 0;
+}
+
+.m_title {
+  margin-left:20px;
+}
+
+li.microposts {
+  margin-top: 20px;
+  border-top: solid 1px #e8e8e8;
+}
+
+li .m_content {
+  display:block;
+  margin: 10px 0 0 0; 
+}
+
+li .timestamp {
+  color: grey;
+  font-size: 0.8em;
+}
 
 // Footer
 
@@ -77,6 +122,22 @@ ul.no-list li, li.no-list {
   // color: #555;
 }
 // Gravatar List
+
+//right info
+.right-info {
+
+  margin-left: 10px;
+  margin-top: -10px;
+  margin-bottom: 30px;
+}
+
+
+.g_name {
+  text-align:left;
+  margin-left: 85px;
+}
+
+
 ul.list-style-none {
   list-style: none;
   li {

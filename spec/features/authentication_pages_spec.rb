@@ -101,6 +101,20 @@ describe 'Authentication', :type => :feature do
           specify { expect(response).to redirect_to(signin_path) }
         end
       end
+
+      describe 'in the Microposts controller', :type => :request do 
+
+        describe 'submitting to the create action' do 
+          before { post microposts_path }
+          specify { expect(response).to redirect_to(signin_path) }
+        end
+
+        describe 'submitting to the destroy action' do 
+          before { delete micropost_path(FactoryGirl.create(:micropost)) }
+          specify { expect(response).to redirect_to(signin_path) }
+        end
+      end
+
     end
 
     describe 'as wrong user', :type => :request do #Same as :request
